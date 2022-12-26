@@ -16,10 +16,10 @@
         <div class="col-sm-6">
           <div class="card shadow">
             <div class="card-body">
-              <div class="alert alert-danger">
+              <!-- <div class="alert alert-danger">
                 <h3>로그인 실패</h3>
                 <p>아이디 비밀번호를 확인해주세요</p>
-              </div>
+              </div> -->
               <form action="index.html" method="post">
                 <div class="form-group">
                   <label for="user_id">아이디</label>

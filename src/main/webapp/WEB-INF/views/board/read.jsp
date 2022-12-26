@@ -30,7 +30,7 @@
                   id="board_date"
                   name="board_date"
                   class="form-control"
-                  value="2018-7-20"
+                  value="2022-12-25"
                   disabled="disabled"
                 />
               </div>
