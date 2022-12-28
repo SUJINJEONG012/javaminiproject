@@ -32,9 +32,9 @@
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav">
          <c:forEach var="menu" items="${topMenuList }">
-      <li class="nav-item">
-        <a href="${root }board/main" class="nav-link">${menu.board_info_name }</a>
-      </li>
+         <li class="nav-item">
+        <a href="${root }board/main?board_info_idx=${menu.board_info_idx }" class="nav-link">${menu.board_info_name }</a>
+         </li>
       </c:forEach>
 
         </ul>
