@@ -23,25 +23,23 @@
     
    <!-- 상단 메뉴 부분 -->
     <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top shadow-lg">
-      <a class="navbar-brand" href="${root}">🚀busanIT</a>
+      <a class="navbar-brand" href="${root}">게시판 프로젝트</a>
+      
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a href="${root }board/main" class="nav-link">자유게시판</a>
-          </li>
-          <li class="nav-item">
-            <a href="${root }board/main" class="nav-link">유머게시판</a>
-          </li>
-          <li class="nav-item">
-            <a href="${root }board/main" class="nav-link">정치게시판</a>
-          </li>
-          <li class="nav-item">
-            <a href="${root }board/main" class="nav-link">스포츠게시판</a>
-          </li>
+         <c:forEach var="menu" items="${topMenuList }">
+      <li class="nav-item">
+        <a href="${root }board/main" class="nav-link">${menu.board_info_name }</a>
+      </li>
+      </c:forEach>
+
         </ul>
+
+
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
