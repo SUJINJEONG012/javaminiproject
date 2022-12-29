@@ -116,25 +116,25 @@ public class ServletAppContext implements WebMvcConfigurer {
 //			return factoryBean;
 //		}
 		
-//		@Override
-//		public void addInterceptors(InterceptorRegistry registry) {
-//			// 인터셉터 추가
-//			WebMvcConfigurer.super.addInterceptors(registry);
-//			
-//			MenuInterceptor menuInterceptor = new MenuInterceptor(menuService, loginUserBean);		
-//			InterceptorRegistration reg1 = registry.addInterceptor(menuInterceptor);
-//			reg1.addPathPatterns("/**"); //모든 요청에 적용됨
-//			
+		@Override
+		public void addInterceptors(InterceptorRegistry registry) {
+			// 인터셉터 추가
+			WebMvcConfigurer.super.addInterceptors(registry);
+			
+			MenuInterceptor menuInterceptor = new MenuInterceptor(menuService);		
+			InterceptorRegistration reg1 = registry.addInterceptor(menuInterceptor);
+			reg1.addPathPatterns("/**"); //모든 요청에 적용됨
+			
 //			CheckLoginInterceptor checkLoginInterceptor = new CheckLoginInterceptor(loginUserBean);
 //			InterceptorRegistration reg2 = registry.addInterceptor(checkLoginInterceptor);
 //			reg2.addPathPatterns("/user/modify", "/user/logout", "/board/*");
 //			reg2.excludePathPatterns("/board/main");
-//			
+			
 //			CheckWriterInterceptor checkWriterInterceptor = new CheckWriterInterceptor(loginUserBean, boardService);
 //			InterceptorRegistration reg3 = registry.addInterceptor(checkWriterInterceptor);
 //			reg3.addPathPatterns("/board/modify", "/board/delete");
-//			
-//		}
+			
+		}
 		
 		@Bean
 		public StandardServletMultipartResolver multipartResolver() {

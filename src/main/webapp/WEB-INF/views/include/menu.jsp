@@ -33,7 +33,7 @@
         <ul class="navbar-nav">
          <c:forEach var="menu" items="${topMenuList }">
          <li class="nav-item">
-        <a href="${root }board/main?board_info_idx=${menu.board_info_idx }" class="nav-link">${menu.board_info_name }</a>
+          <a href="${root }board/main?board_info_idx=${menu.board_info_idx }" class="nav-link">${menu.board_info_name }</a>
          </li>
       </c:forEach>
 
