@@ -12,10 +12,9 @@ import com.demo.service.MenuService;
 
 public class MenuInterceptor implements HandlerInterceptor{
 
-	
-	private MenuService menuService;
-	
 	//생성자 주입
+	private MenuService menuService;
+
 	public MenuInterceptor(MenuService menuService) {
 		this.menuService = menuService;
 	}
@@ -26,7 +25,6 @@ public class MenuInterceptor implements HandlerInterceptor{
 		
 		List<BoardInfoBean> topMenuList = menuService.getMenuList();
 		request.setAttribute("topMenuList", topMenuList);
-		
 		return true;
 	}
 

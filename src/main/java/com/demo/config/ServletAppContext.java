@@ -80,7 +80,6 @@ public class ServletAppContext implements WebMvcConfigurer {
 			source.setUrl(db_url);
 			source.setUsername(db_username);
 			source.setPassword(db_password);
-			
 			return source;
 		}
 		
@@ -120,6 +119,7 @@ public class ServletAppContext implements WebMvcConfigurer {
 		public void addInterceptors(InterceptorRegistry registry) {
 			// 인터셉터 추가
 			WebMvcConfigurer.super.addInterceptors(registry);
+		
 			
 			MenuInterceptor menuInterceptor = new MenuInterceptor(menuService);		
 			InterceptorRegistration reg1 = registry.addInterceptor(menuInterceptor);

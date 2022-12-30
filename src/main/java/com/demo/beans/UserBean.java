@@ -12,7 +12,8 @@ public class UserBean {
 	@Pattern(regexp = "[가-힣]*", message = "한글만 사용가능")
 	private String user_name;
 	
-	private String user_id;
-	private String user_pw;
+	private String user_id; //아이디
+	private String user_pw;//비밀번호
+	private String user_pw2; //비밀번호 확인
 	
 }
