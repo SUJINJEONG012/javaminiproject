@@ -15,38 +15,36 @@
         <div class="col-sm-6">
           <div class="card shadow">
             <div class="card-body">
-              
-              <!-- form으로 변경-->
-                <form:form action="${root }user/join_pro" modelAttribute="joinUserBean">
+            
+             <form:form action="${root }user/join_pro" modelAttribute="joinUserBean">
+
+             
+              <%-- <form action="login.html" method="post"> --%>
                 <div class="form-group">
                   <form:label path="user_name">이름</form:label>
                   <form:input path="user_name" class="form-control" />
-                  <form:errors path="user_name" style="color:coral" />
+                  <form:errors path="user_name" />
+
+                  
+                  <input type="text" id="user_name" name="user_name" class="form-control" />
                 </div>
+                
                 <div class="form-group">
-                  <form:label path="user_id">아이디</form:label>
+                  <label for="user_id">아이디</label>
                   <div class="input-group">
-                    <form:input path="user_id" class="form-control" />
+                    <input type="text" id="user_id" name="user_id" class="form-control" />
                     <div class="input-group-append">
-                      <button onclick="checkUserIdExist()" type="button" class="btn btn-primary">중복확인</button>
+                      <button type="button" class="btn btn-primary">중복확인</button>
                     </div>
                   </div>
-                  <form:errors path="user_id" style="color:coral" />
-                </div>
-                <div class="form-group" id="idCheck">
-                   <form:hidden path="userIdChecked"/>
-                   <form:errors path="userIdChecked" style="color:coral" />
-                </div>               
-                <div class="form-group">
-                  <form:label path="user_pw">비밀번호</form:label>
-                  <form:input path="user_pw" class="form-control" />
-                  <form:errors path="user_pw" style="color:coral" />
                 </div>
                 <div class="form-group">
-                  <form:label path="user_pw2">비밀번호 확인</form:label>
-                  <form:input path="user_pw2" class="form-control" />
-                  <form:errors path="user_pw2" style="color:coral" />
-                  <div style="color:coral">${msg }</div>
+                  <label for="user_pw">비밀번호</label>
+                  <input type="password" id="user_pw" name="user_pw" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label for="user_pw2">비밀번호 확인</label>
+                  <input type="password" id="user_pw2" name="user_pw2" class="form-control" />
                 </div>
                 <div class="form-group">
                   <div class="text-right">
@@ -54,9 +52,6 @@
                   </div>
                 </div>
               </form:form>
-
-              
-              
               
               
               
