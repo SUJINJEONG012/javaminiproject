@@ -17,6 +17,7 @@ public class UserController {
 	}
 
 	@GetMapping("/join")
+	
 	public String join(@ModelAttribute("joinUserBean") UserBean joinUserBean) {
 		return "user/join";
 	}
