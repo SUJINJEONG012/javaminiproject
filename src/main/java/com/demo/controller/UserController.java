@@ -1,5 +1,6 @@
 package com.demo.controller;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.demo.beans.LoginUserBean;
 import com.demo.beans.UserBean;
 import com.demo.service.UserService;
 
@@ -21,13 +24,42 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
-	
+	@Resource(name = "loginUserBean")
+	private LoginUserBean loginUserBean;
+
 	
 	@GetMapping("/login")
-	public String login() {
+	public String login(@ModelAttribute("loginBean") LoginUserBean loginBean, Model model, 
+			@RequestParam(value="fail",defaultValue="false") boolean fail) {
+		model.addAttribute("fail", fail);
 		return "user/login";
 	}
+	
+	//유효성검사 
+	@PostMapping("/login_pro")
+	public String login_pro(@Valid @ModelAttribute("loginBean") LoginUserBean loginBean, 
+							BindingResult result) {		
+		if(result.hasErrors()) {
+			return "user/login";
+		}
+		//유효성테스트 완료후 id pw로 현재 로그인 유저정보를 DB에서 꺼내와 세션에 로그인객체에 저장한다.
+		userService.getLoginUserInfo(loginBean);
+		
+		if(loginUserBean.isUserLogin() == true) {
+			return "user/login_success";
+		} else {
+			return "user/login_fail";
+		}
+		
+	}
+	
+	@GetMapping("/not_login")
+	public String not_login() {
+		return "user/not_login";
+	}
+	
 
+	
 	@GetMapping("/join")
 	public String join(@ModelAttribute("joinUserBean") UserBean joinUserBean) {
 		return "user/join";
@@ -49,14 +81,19 @@ public class UserController {
      	return "user/join_success";
 		
 	}
-
+	
+   //회원수정 만들기
 	@GetMapping("/modify")
-	public String modify() {
+	public String modify(@ModelAttribute("modifyUserBean")UserBean modifyUserBean) {
+		//현재 로그인중 loginUserBean에서 아이디와 이름값을 얻어 modifyUserBean에 넣기
+		userService.getModifyUserInfo(modifyUserBean);
+		
 		return "user/modify";
 	}
 
 	@GetMapping("/logout")
 	public String logout() {
+		loginUserBean.setUserLogin(true);
 		return "user/logout";
 	}
 	

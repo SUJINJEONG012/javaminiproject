@@ -44,13 +44,13 @@
                 
                 <div class="form-group">
                   <form:label path="user_pw">비밀번호</form:label>
-                  <form:input path="user_pw" class="form-control" />
+                  <form:input path="user_pw" type="password" class="form-control" />
                   <form:errors path="user_pw" style="color:coral"/>
                 </div>
                 
                 <div class="form-group">
                   <form:label path="user_pw2">비밀번호 확인</form:label>
-                  <form:input path="user_pw2" class="form-control" />
+                  <form:input path="user_pw2" type="password" class="form-control" />
                   <form:errors path="user_pw2" style="color:coral"/>
                   <div style="color:coral">${msg }</div>
                 </div>
