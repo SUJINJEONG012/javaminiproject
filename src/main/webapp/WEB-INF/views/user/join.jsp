@@ -36,6 +36,11 @@
                   <form:errors path="user_id" style="color:coral"/>
                 </div>
                 
+                <div class="form-group" id="idCheck">
+                <form:hidden path="userIdChecked"/>
+                <form:errors path="userIdChecked" style="color:coral"/>
+                </div>
+                
                 
                 <div class="form-group">
                   <form:label path="user_pw">비밀번호</form:label>
@@ -68,5 +73,42 @@
 
 
 
+
+
 <!-- 하단 푸터부분 -->
 <c:import url="/WEB-INF/views/include/footer.jsp" />
+
+<script type="text/javascript" >
+
+function checkUserIdExist(){
+	
+	const user_id = $("#user_id").val()
+	
+	if(user_id.length == 0){
+		alert("아이디를 입력해주세요.")
+		return 
+	}
+	
+	$.ajax({
+		url : '${root}user/check/' + user_id,
+		type: 'get',
+		dataType : 'text',
+			success: function (result){
+				if(result.trim()=='true'){
+					alert("사용할 수 있는 아이디 입니다.")
+					$("#userIdChecked").val("true")
+					$("#joinUserBean #idCheck span").text('')
+					
+				}else{
+					alert("사용할 수 없는 아이디 입니다.")
+					$("#userIdChecked").val('false')
+				}
+			}
+
+	})
+	}
+
+	function resetUserIdExist() {
+		$("#userIdChecked").val('false')
+	}
+</script>

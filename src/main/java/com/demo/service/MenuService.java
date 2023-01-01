@@ -18,4 +18,6 @@ public class MenuService {
 		List<BoardInfoBean> menuList = menuMapper.getMenuList();
 		return menuList;
 	}
+	
+	
 }
