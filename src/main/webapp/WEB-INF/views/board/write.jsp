@@ -18,7 +18,8 @@
             <div class="card-body">
               
               
-              <form:form action="${root }board/write_pro"  modelAttribute="writeContentBean">
+              <form:form action="${root }board/write_pro"  enctype="multipart/form-data" modelAttribute="writeContentBean">
+                <form:hidden path="content_board_idx"/>
                 
                 <div class="form-group">
                   <form:label path="content_subject">제목</form:label>
@@ -34,14 +35,15 @@
                 
                 <div class="form-group">
                   <form:label path="content_file">첨부 이미지</form:label>
-                  <form:input type="file" path="content_file" class="form-control" accept="image/*" />
+                  <form:input type="file" path="upload_file" class="form-control" accept="image/*" />
                 </div>
                 
                 <div class="form-group">
                   <div class="text-right">
-                    <form:button type="submit" class="btn btn-primary">작성하기</form:button>
+                    <form:button class='btn btn-primary'>작성하기</form:button>
                   </div>
                 </div>
+                
               </form:form>
               
               

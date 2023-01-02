@@ -2,6 +2,8 @@ package com.demo.beans;
 
 import javax.validation.constraints.NotBlank;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ContentBean {
 
 	private int content_idx;
@@ -11,10 +13,26 @@ public class ContentBean {
 	
 	@NotBlank(message="내용을 입력해주세요.")
 	private String content_text; //내용 
-	private String content_file; //파일 
+	
+	
+	private String content_file; //파일의 이름을 넣을 문자열 변수
 	private int content_writer_idx; 
 	private int content_board_idx;
+	
 	private String content_date;
+	
+    private MultipartFile upload_file;  //업로드 한 파일을 담을 객체 추가하기
+
+	
+	
+	
+	public MultipartFile getUpload_file() {
+		return upload_file;
+	}
+	
+	public void setUpload_file(MultipartFile upload_file) {
+		this.upload_file = upload_file;
+	}
 	
 	
 	public int getContent_idx() {
