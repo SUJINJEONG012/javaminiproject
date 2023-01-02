@@ -82,7 +82,7 @@ public class UserController {
 		
 	}
 	
-   //회원수정 만들기
+   //회원수정, 데이터베이스에있는정보 가져오기
 	@GetMapping("/modify")
 	public String modify(@ModelAttribute("modifyUserBean")UserBean modifyUserBean) {
 		//현재 로그인중 loginUserBean에서 아이디와 이름값을 얻어 modifyUserBean에 넣기
@@ -90,6 +90,23 @@ public class UserController {
 		
 		return "user/modify";
 	}
+	
+	@PostMapping("/modify_pro")
+	public String modify_pro(@Valid @ModelAttribute("modifyUserBean") UserBean modifyUserBean, BindingResult result, Model model) {
+		if(result.hasErrors()) {
+			return "user/modify";
+		}
+		
+		if(!modifyUserBean.getUser_pw().equals(modifyUserBean.getUser_pw2())) {
+			model.addAttribute("msg", "비밀번호가 같지 않습니다.!");
+			return "user/modify";
+		}
+		
+		//DB에 저장된 비밀번호 저장하기
+		userService.modifyUserInfo(modifyUserBean);
+		return "user/modify_success";
+	}
+	
 
 	@GetMapping("/logout")
 	public String logout() {

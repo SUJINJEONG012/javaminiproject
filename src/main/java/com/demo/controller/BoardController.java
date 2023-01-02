@@ -1,8 +1,13 @@
 package com.demo.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.demo.beans.ContentBean;
 
 @Controller
 @RequestMapping("/board")
@@ -10,7 +15,8 @@ public class BoardController {
 
 	
 	@GetMapping("/main")
-	public String main() {
+	public String main(@RequestParam("board_info_idx") int board_info_idx, Model model) {
+		model.addAttribute("board_info_idx", board_info_idx);
 		return "board/main";
 	}
 	
@@ -20,7 +26,7 @@ public class BoardController {
 	}
 	
 	@GetMapping("/write")
-	public String write() {
+	public String write(@ModelAttribute("writeContentBean") ContentBean writeContentBean) {
 		return "board/write";
 	}
 	

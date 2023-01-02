@@ -55,6 +55,14 @@ public class UserService {
 		modifyUserBean.setUser_name(temp.getUser_name());
 		modifyUserBean.setUser_idx(temp.getUser_idx());
 	}
+	
+	//회원정보수정
+	public void modifyUserInfo(UserBean modifyUserBean) {
+		modifyUserBean.setUser_idx(loginUserBean.getUser_idx());
+		
+		userMapper.modifyUserInfo(modifyUserBean);
+	} 
+	
 
 
 	
