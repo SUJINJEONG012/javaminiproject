@@ -1,9 +1,15 @@
 package com.demo.beans;
 
+import javax.validation.constraints.NotBlank;
+
 public class ContentBean {
 
 	private int content_idx;
-	private String content_subject; //제목 
+	
+	@NotBlank(message="제목을 입력해주세요.")
+	private String content_subject; //제목
+	
+	@NotBlank(message="내용을 입력해주세요.")
 	private String content_text; //내용 
 	private String content_file; //파일 
 	private int content_writer_idx; 
