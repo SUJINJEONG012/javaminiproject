@@ -18,12 +18,11 @@ public class ContentBean {
 	private String content_file; //파일의 이름을 넣을 문자열 변수
 	private int content_writer_idx; 
 	private int content_board_idx;
-	
 	private String content_date;
 	
     private MultipartFile upload_file;  //업로드 한 파일을 담을 객체 추가하기
 
-	
+    private String content_writer_name; //글쓴이 이름 추가
 	
 	
 	public MultipartFile getUpload_file() {
@@ -35,6 +34,16 @@ public class ContentBean {
 	}
 	
 	
+	
+	public String getContent_writer_name() {
+		return content_writer_name;
+	}
+
+	public void setContent_writer_name(String content_writer_name) {
+		this.content_writer_name = content_writer_name;
+	}
+	
+
 	public int getContent_idx() {
 		return content_idx;
 	}
@@ -71,9 +80,11 @@ public class ContentBean {
 	public void setContent_board_idx(int content_board_idx) {
 		this.content_board_idx = content_board_idx;
 	}
+	
 	public String getContent_date() {
 		return content_date;
 	}
+	
 	public void setContent_date(String content_date) {
 		this.content_date = content_date;
 	}

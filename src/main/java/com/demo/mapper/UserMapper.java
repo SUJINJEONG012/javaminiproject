@@ -28,6 +28,7 @@ public interface UserMapper {
 		 "where user_idx = #{user_idx}")
  UserBean getModifyUserInfo(int user_idx);
 
+ 
  @Update("update user_table " +
 			"set user_pw = #{user_pw} " +
 			"where user_idx = #{user_idx}")

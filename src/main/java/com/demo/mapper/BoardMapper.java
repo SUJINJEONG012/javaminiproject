@@ -1,5 +1,34 @@
 package com.demo.mapper;
 
-public class BoardMapper {
+import java.util.List;
+
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+
+import com.demo.beans.ContentBean;
+
+public interface BoardMapper {
+
+	@Insert("insert into content_table(content_subject, content_text, " +
+			"content_file, content_writer_idx, content_board_idx, content_date) " +
+			"values (#{content_subject}, #{content_text}, #{content_file, jdbcType=VARCHAR}, " +
+			"#{content_writer_idx}, #{content_board_idx}, now())")
+	void addContentInfo(ContentBean writeContentBean);
+	
+	
+	@Select("select board_info_name " + 
+	        "from board_info_table " +
+			"where board_info_idx = #{board_info_idx}")
+	String getBoardInfoName(int board_info_idx);
+	
+
+
+	@Select("select t1.content_idx, t1.content_subject, t2.user_name as content_writer_name, " + 
+			"DATE_FORMAT(t1.content_date, 'YYYY-MM-DD') as content_date " + 
+			"from content_table t1 JOIN user_table t2 " + 
+			"ON t1.content_writer_idx = t2.user_idx " +
+			"and t1.content_board_idx = #{board_info_idx} order by t1.content_idx desc")
+	List<ContentBean> getContentList(int board_info_idx);
+	
 
 }
