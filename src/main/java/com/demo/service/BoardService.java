@@ -42,12 +42,9 @@ public class BoardService {
 		return file_name;
 	}
 	
-	
 
 	public void addContentInfo(ContentBean writeContentBean) {
-		
-		MultipartFile upload_file = writeContentBean.getUpload_file();
-		
+		MultipartFile upload_file = writeContentBean.getUpload_file();		
 		if(upload_file.getSize() > 0 ) {
 			//위의 메서드로 파일을 저장하고 그 이름을 가져옴
 			String file_name = saveUploadFile(upload_file);
@@ -69,6 +66,7 @@ public class BoardService {
 	
 	//페이지에 해당하는 글들을 가져온다.
 	public List<ContentBean> getContentList(int board_info_idx){
+		System.out.println("board_info_idx서비스 : @@@ " + board_info_idx);
 		return boardMapper.getContentList(board_info_idx);
 	}
 

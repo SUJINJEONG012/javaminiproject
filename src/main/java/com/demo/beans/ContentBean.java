@@ -32,9 +32,6 @@ public class ContentBean {
 	public void setUpload_file(MultipartFile upload_file) {
 		this.upload_file = upload_file;
 	}
-	
-	
-	
 	public String getContent_writer_name() {
 		return content_writer_name;
 	}

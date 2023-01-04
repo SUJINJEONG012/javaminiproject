@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <c:set var='root' value="${pageContext.request.contextPath }/"/>
 
 
@@ -13,9 +12,11 @@
       <div class="card shadow">
         <div class="card-body">
           <h4 class="card-title">${boardInfoName }</h4>
+          
           <table class="table table-hover" id="board_list">
             
             <thead>
+            
               <tr>
                 <th class="text-center d-none d-md-table-cell">글번호</th>
                 <th class="w-50">제목</th>
@@ -24,17 +25,17 @@
               </tr>
             </thead>
             
-          
+            
+   
             <tbody>
-              <c:forEach var="obj" items="${contentList}">
+             <c:forEach var="obj" items="${contentList}">
               <tr>
-                <td class="text-center d-none d-md-table-cell">${obj.content_idx}</td>
-                <td><a href="${root }board/read">${obj.content_subject} </a></td>
-               
-                <td class="text-center d-none d-md-table-cell">${obj.content_writer_name}</td>
-                <td class="text-center d-none d-md-table-cell">${obj.content_date}</td>
+                <td class="text-center d-none d-md-table-cell">${obj.content_idx }</td>
+                <td><a href="${root }board/main">${obj.content_subject }</a></td>
+                 <td class="text-center d-none d-md-table-cell">${obj.content_writer_name }</td>
+                <td class="text-center d-none d-md-table-cell">${obj.content_date }</td>
               </tr>
-			  </c:forEach>
+			  </c:forEach>       
             </tbody>
        
           </table>
