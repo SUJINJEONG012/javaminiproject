@@ -59,6 +59,7 @@ public class BoardService {
 		writeContentBean.setContent_writer_idx(loginUserBean.getUser_idx());
 		
 		boardMapper.addContentInfo(writeContentBean);
+		//System.out.println( "user_idx : >>" +loginUserBean.getUser_idx());
 	
 	}
 	

@@ -3,6 +3,7 @@ package com.demo.beans;
 public class BoardInfoBean {
  
 	private int board_info_idx;
+	
 	private String board_info_name;
 	
 	public int getBoard_info_idx() {
