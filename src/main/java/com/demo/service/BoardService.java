@@ -69,6 +69,13 @@ public class BoardService {
 		System.out.println("board_info_idx서비스 : @@@ " + board_info_idx);
 		return boardMapper.getContentList(board_info_idx);
 	}
+	
+	
+	public ContentBean getContentInfo(int content_idx) {
+		return boardMapper.getContentInfo(content_idx);
+	}
+	
+	
 
 	
 

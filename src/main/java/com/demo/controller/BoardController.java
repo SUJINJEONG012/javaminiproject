@@ -42,12 +42,7 @@ public class BoardController {
 		model.addAttribute("boardInfoName", boardInfoName);
 		
 		List<ContentBean> contentList = boardService.getContentList(board_info_idx );
-		model.addAttribute("cotentList", contentList);
-		
-//		PageBean pageBean = boardService.getContentCnt(board_info_idx, page);
-//		model.addAttribute("pageBean", pageBean);
-//		
-//		model.addAttribute("page", page);
+		model.addAttribute("contentList", contentList);
 		System.out.println("cotentList : " + contentList.toString());
 		System.out.println("board_info_idx ::!!!!!" + board_info_idx);
 		
@@ -57,19 +52,17 @@ public class BoardController {
 
 	@GetMapping("/read")
 	public String read(@RequestParam("board_info_idx") int board_info_idx,
-					   @RequestParam("content_idx") int content_idx, 
-					   @RequestParam(value = "page", defaultValue = "1") int page,
-					   Model model) {
+					   @RequestParam("content_idx") int content_idx, Model model) {
 		model.addAttribute("board_info_idx", board_info_idx);
-		model.addAttribute("content_idx", content_idx);
-		model.addAttribute("loginUserBean", loginUserBean);
-		model.addAttribute("page", page);
+		System.out.println("board_info_idx : "+ board_info_idx);
+		System.out.println("content_idx : "+ content_idx);
 		//글 번호로 DB에서 게시글 내용 읽어오기
-		//ContentBean readContentBean = boardService.getContentInfo(content_idx);
-		//model.addAttribute("readContentBean", readContentBean);
+		ContentBean readContentBean = boardService.getContentInfo(content_idx);
+		model.addAttribute("readContentBean", readContentBean);
+		//System.out.println("readContentBean : "+readContentBean.getContent_file());
 		return "board/read";
 	}
-
+	
 	
 	@GetMapping("/write")
 	public String write(@ModelAttribute("writeContentBean") ContentBean writeContentBean, @RequestParam("board_info_idx") int board_info_idx) {
