@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.demo.beans.ContentBean;
 import com.demo.beans.LoginUserBean;
+import com.demo.beans.PageBean;
 import com.demo.service.BoardService;
 
 @Controller
@@ -40,10 +41,13 @@ public class BoardController {
 		String boardInfoName = boardService.getBoardInfoName(board_info_idx);
 		model.addAttribute("boardInfoName", boardInfoName);
 		
-		List<ContentBean> contentList = boardService.getContentList(board_info_idx );
+		List<ContentBean> contentList = boardService.getContentList(board_info_idx, page);
 		model.addAttribute("contentList", contentList);
 		System.out.println("cotentList : " + contentList.toString());
 		System.out.println("board_info_idx ::!!!!!" + board_info_idx);
+		
+		PageBean pageBean = boardService.getContentCnt(board_info_idx, page);
+		model.addAttribute("pageBean", pageBean);
 		
 		return "board/main";
 		
@@ -120,9 +124,14 @@ public class BoardController {
 	
 
 	@GetMapping("/delete")
-	public String delete() {
+	public String delete(@RequestParam("board_info_idx") int board_info_idx, @RequestParam("content_idx")int content_idx, Model model) {
+		boardService.deleteContentInfo(content_idx);
+		model.addAttribute("board_info_idx", board_info_idx);
+		
 		return "board/delete";
 	}
+	
+	
 	
 	@GetMapping("/not_writer")
 	public String not_writer() {

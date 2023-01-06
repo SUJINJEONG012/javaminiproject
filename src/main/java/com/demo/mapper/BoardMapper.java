@@ -2,9 +2,11 @@ package com.demo.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.session.RowBounds;
 
 import com.demo.beans.ContentBean;
 
@@ -37,7 +39,7 @@ public interface BoardMapper {
 			"ON t1.content_writer_idx = t2.user_idx " +
 			"and t1.content_board_idx = #{board_info_idx} order by t1.content_idx desc")
 	
-	List<ContentBean> getContentList(int board_info_idx);
+	List<ContentBean> getContentList(int board_info_idx, RowBounds rowBounds);
 	
 	
 	
@@ -57,6 +59,11 @@ public interface BoardMapper {
 	void modifyContentInfo(ContentBean modifyContentBean);
 	
 			
+	@Delete("delete from content_table where content_idx=#{content_idx}")
+	void deleteContentInfo(int content_idx);
 	
+	
+	@Select("select count(*) from content_table where content_board_idx = #{content_board_idx}")
+	int getContentCnt(int content_board_idx);
 
 }

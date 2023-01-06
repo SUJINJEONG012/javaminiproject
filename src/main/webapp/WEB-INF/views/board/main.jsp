@@ -45,9 +45,27 @@
 
           <div class="d-none d-md-block">
             <ul class="pagination justify-content-center">
-              <li class="page-item">
+            
+            <!-- 이전페이지 -->
+            <c:choose>
+              <c:when test="$pageBean.prevPage <= 0 }">
+              <li class="page-item disabled">
                 <a href="#" class="page-link">이전</a>
               </li>
+              </c:when>
+              
+              <c:otherwise>
+              <li class="page-item">
+                <a href="${root }board/main?board_info_idx=${board_info_idx}&page=${pageBean.prevPage}" class="page-link">이전</a>
+              </li>
+              </c:otherwise>
+              
+            </c:choose>
+             <!-- 이전페이지 -->
+             
+            
+            <!-- 중간페이지 번호들 -->
+            
               <li class="page-item">
                 <a href="#" class="page-link">1</a>
               </li>
