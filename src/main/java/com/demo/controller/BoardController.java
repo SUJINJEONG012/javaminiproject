@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import com.demo.beans.ContentBean;
 import com.demo.beans.LoginUserBean;
 import com.demo.service.BoardService;
@@ -52,16 +51,20 @@ public class BoardController {
 
 	@GetMapping("/read")
 	public String read(@RequestParam("board_info_idx") int board_info_idx,
-					   @RequestParam("content_idx") int content_idx, Model model) {
+					   @RequestParam("content_idx") int content_idx, 
+					   Model model) {
 		model.addAttribute("board_info_idx", board_info_idx);
-		System.out.println("board_info_idx : "+ board_info_idx);
-		System.out.println("content_idx : "+ content_idx);
+		model.addAttribute("content_idx", content_idx);
+		model.addAttribute("loginUserBean",loginUserBean);
+	
 		//글 번호로 DB에서 게시글 내용 읽어오기
 		ContentBean readContentBean = boardService.getContentInfo(content_idx);
 		model.addAttribute("readContentBean", readContentBean);
-		//System.out.println("readContentBean : "+readContentBean.getContent_file());
+		
 		return "board/read";
 	}
+	
+	
 	
 	
 	@GetMapping("/write")
@@ -89,13 +92,29 @@ public class BoardController {
 	
 
 	@GetMapping("modify")
-	public String modify() {
+	public String modify(@RequestParam("board_info_idx") int board_info_idx,
+						@RequestParam("content_idx") int contet_idx, Model model,
+						@ModelAttribute("modifyContentBean") ContentBean modifyContentBean) {
+		
+		modifyContentBean.setContent_board_idx(board_info_idx);
+		modifyContentBean.setContent_idx(contet_idx);
+		
+		boardService.getContents(modifyContentBean);
+		model.addAttribute("modifyContentBean", modifyContentBean);
 		return "board/modify";
 	}
+	
+	
+	
 
 	@GetMapping("/delete")
 	public String delete() {
 		return "board/delete";
+	}
+	
+	@GetMapping("/not_writer")
+	public String not_writer() {
+		return "board/not_writer";
 	}
 
 }

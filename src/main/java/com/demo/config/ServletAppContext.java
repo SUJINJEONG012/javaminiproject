@@ -22,10 +22,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.demo.beans.LoginUserBean;
 import com.demo.interceptor.CheckLoginInterceptor;
+import com.demo.interceptor.CheckWriterInterceptor;
 import com.demo.interceptor.MenuInterceptor;
 import com.demo.mapper.BoardMapper;
 import com.demo.mapper.MenuMapper;
 import com.demo.mapper.UserMapper;
+import com.demo.service.BoardService;
 import com.demo.service.MenuService;
 
 //Spring MVC 관련된 설정을 하는 클래스
@@ -53,6 +55,9 @@ public class ServletAppContext implements WebMvcConfigurer {
 
 	@Autowired
 	private MenuService menuService;
+	
+	@Autowired
+	private BoardService boardService;
 
 	@Resource(name = "loginUserBean")
 	private LoginUserBean loginUserBean;
@@ -136,8 +141,16 @@ public class ServletAppContext implements WebMvcConfigurer {
 		InterceptorRegistration reg2 = registry.addInterceptor(checkLoginInterceptor);
 		reg2.addPathPatterns("/user/modify", "/user/logout", "/board/*");
 		reg2.excludePathPatterns("/board/main");
-
+		
+		
+		//글쓴사람이 아닐 때 수정/삭제 제한
+		CheckWriterInterceptor checkWriterInterceptor =  new CheckWriterInterceptor(loginUserBean, boardService);
+		InterceptorRegistration reg3 = registry.addInterceptor(checkWriterInterceptor);
+		reg3.addPathPatterns("/board/modify", "/board/delete");
+		
+	
 	}
+	
 
 	// 파일업로드 빈등록
 	@Bean

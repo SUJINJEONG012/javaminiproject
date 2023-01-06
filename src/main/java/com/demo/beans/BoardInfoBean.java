@@ -1,10 +1,10 @@
 package com.demo.beans;
 
 public class BoardInfoBean {
- 
-	private int board_info_idx;
 	
-	private String board_info_name;
+ 
+	private int board_info_idx; // 게시판 번호 
+	private String board_info_name;  // 게시판 이름
 	
 	public int getBoard_info_idx() {
 		return board_info_idx;
