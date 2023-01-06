@@ -88,6 +88,18 @@ public class BoardService {
 	
 	}
 	
+	//글 수정
+	public void modifyContentInfo(ContentBean modifyContentBean) {
+		MultipartFile upload_file = modifyContentBean.getUpload_file();
+		
+		//새로 이미지를 업로드하면새로운 이미지로 이름을 수정 
+		if(upload_file.getSize() > 0) {
+			String file_name = saveUploadFile(upload_file);
+			modifyContentBean.setContent_file(file_name);	
+		}
+		
+		boardMapper.modifyContentInfo(modifyContentBean);
+	}
 	
 
 	

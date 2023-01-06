@@ -101,7 +101,19 @@ public class BoardController {
 		
 		boardService.getContents(modifyContentBean);
 		model.addAttribute("modifyContentBean", modifyContentBean);
+		
 		return "board/modify";
+	}
+	
+	@PostMapping("/modify_pro")
+	public  String modify_pro(@Valid @ModelAttribute("modifyContentBean") ContentBean modifyContentBean, BindingResult result) {
+		
+		if(result.hasErrors()) {
+			return "board/modify";
+		}
+		//db에 업데이트
+		boardService.modifyContentInfo(modifyContentBean);
+		return "board/modify_success";
 	}
 	
 	
