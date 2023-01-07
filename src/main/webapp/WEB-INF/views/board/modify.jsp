@@ -59,7 +59,7 @@
                 <div class="form-group">
                   <div class="text-right">
                     <form:button class='btn btn-primary'>작성하기</form:button>
-                    <a href="${root }board/read?board_info_idx=${modifyContentBean.content_board_idx}&content_idx=${modifyContentBean.content_idx}" class="btn btn-info">취소 </a>
+                    <a href="${root }board/read?board_info_idx=${modifyContentBean.content_board_idx}&content_idx=${modifyContentBean.content_idx}&page=${page}" class="btn btn-info">취소 </a>
                   </div>
                 </div>
                 

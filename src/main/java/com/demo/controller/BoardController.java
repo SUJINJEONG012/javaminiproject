@@ -32,22 +32,23 @@ public class BoardController {
 	
 	
 	@GetMapping("/main")
-	public String main(@RequestParam("board_info_idx") int board_info_idx, Model model,@RequestParam(value = "page", defaultValue = "1") int page)  {
+	public String main(@RequestParam("board_info_idx") int board_info_idx, Model model,
+			@RequestParam(value = "page", defaultValue = "1") int page)  {
 		
 		model.addAttribute("board_info_idx", board_info_idx);
 		
-		System.out.println("board_info_idx : 컨트롤러 @@@ " + board_info_idx);
 		
 		String boardInfoName = boardService.getBoardInfoName(board_info_idx);
 		model.addAttribute("boardInfoName", boardInfoName);
 		
 		List<ContentBean> contentList = boardService.getContentList(board_info_idx, page);
 		model.addAttribute("contentList", contentList);
-		System.out.println("cotentList : " + contentList.toString());
-		System.out.println("board_info_idx ::!!!!!" + board_info_idx);
+		
 		
 		PageBean pageBean = boardService.getContentCnt(board_info_idx, page);
 		model.addAttribute("pageBean", pageBean);
+//		model.addAttribute("page", page);
+	
 		
 		return "board/main";
 		
@@ -56,7 +57,7 @@ public class BoardController {
 	@GetMapping("/read")
 	public String read(@RequestParam("board_info_idx") int board_info_idx,
 					   @RequestParam("content_idx") int content_idx, 
-					   Model model) {
+					  Model model) {
 		model.addAttribute("board_info_idx", board_info_idx);
 		model.addAttribute("content_idx", content_idx);
 		model.addAttribute("loginUserBean",loginUserBean);

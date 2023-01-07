@@ -41,77 +41,59 @@
        
           </table>
           
+          <!-- 페이징처리 -->
+         <div class="d-none d-md-block">
+            <ul class="pagination justify-content-center">
+            
+              <c:choose>
+                <c:when test="${pageBean.prevPage <= 0 }">
+				  <li class="page-item disabled">
+					<a href="#" class="page-link">이전</a>
+				  </li>
+                </c:when>
+                <c:otherwise>
+               	  <li class="page-item">
+					<a href="${root }board/main?board_info_idx=${board_info_idx}&page=${pageBean.prevPage}" 
+					   class="page-link">이전</a>
+				  </li>
+                </c:otherwise>
+              </c:choose>
+              
+              <c:forEach var="idx" begin="${pageBean.min}" end="${pageBean.max}">
+   			    <c:choose>
+				<c:when test="${idx == pageBean.currentPage}">
+				  <li class="page-item active">
+					<a href="${root }board/main?board_info_idx=${board_info_idx}&page=${idx}" class="page-link">${idx }</a>
+				  </li>
+				</c:when>
+				<c:otherwise>
+				  <li class="page-item">
+					<a href="${root }board/main?board_info_idx=${board_info_idx}&page=${idx}" class="page-link">${idx }</a>
+				  </li>
+				</c:otherwise>
+				</c:choose>   			     			  
+   			  </c:forEach>
+   			  
+              <c:choose>
+                <c:when test="${pageBean.max >= pageBean.pageCnt }">
+				  <li class="page-item disabled">
+					<a href="#" class="page-link">다음</a>
+				  </li>
+                </c:when>
+                <c:otherwise>
+               	  <li class="page-item">
+					<a href="${root }board/main?board_info_idx=${board_info_idx}&page=${pageBean.nextPage}" 
+					   class="page-link">다음</a>
+				  </li>
+                </c:otherwise>
+              </c:choose>
+              
+            </ul>
+          </div>
+          <!-- 페이징처리 -->
+         
+         
           
-
-          <div class="d-none d-md-block">
-            <ul class="pagination justify-content-center">
-            
-            <!-- 이전페이지 -->
-            <c:choose>
-              <c:when test="$pageBean.prevPage <= 0 }">
-              <li class="page-item disabled">
-                <a href="#" class="page-link">이전</a>
-              </li>
-              </c:when>
-              
-              <c:otherwise>
-              <li class="page-item">
-                <a href="${root }board/main?board_info_idx=${board_info_idx}&page=${pageBean.prevPage}" class="page-link">이전</a>
-              </li>
-              </c:otherwise>
-              
-            </c:choose>
-             <!-- 이전페이지 -->
-             
-            
-            <!-- 중간페이지 번호들 -->
-            
-              <li class="page-item">
-                <a href="#" class="page-link">1</a>
-              </li>
-              <li class="page-item">
-                <a href="#" class="page-link">2</a>
-              </li>
-              <li class="page-item">
-                <a href="#" class="page-link">3</a>
-              </li>
-              <li class="page-item">
-                <a href="#" class="page-link">4</a>
-              </li>
-              <li class="page-item">
-                <a href="#" class="page-link">5</a>
-              </li>
-              <li class="page-item">
-                <a href="#" class="page-link">6</a>
-              </li>
-              <li class="page-item">
-                <a href="#" class="page-link">7</a>
-              </li>
-              <li class="page-item">
-                <a href="#" class="page-link">8</a>
-              </li>
-              <li class="page-item">
-                <a href="#" class="page-link">9</a>
-              </li>
-              <li class="page-item">
-                <a href="#" class="page-link">10</a>
-              </li>
-              <li class="page-item">
-                <a href="#" class="page-link">다음</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="d-block d-md-none">
-            <ul class="pagination justify-content-center">
-              <li class="page-item">
-                <a href="#" class="page-link">이전</a>
-              </li>
-              <li class="page-item">
-                <a href="#" class="page-link">다음</a>
-              </li>
-            </ul>
-          </div>
 
           <div class="text-right">
             <a href="${root }board/write?board_info_idx=${board_info_idx }" class="btn btn-primary">글쓰기</a>
