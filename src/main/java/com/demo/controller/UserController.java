@@ -110,7 +110,7 @@ public class UserController {
 
 	@GetMapping("/logout")
 	public String logout() {
-		loginUserBean.setUserLogin(true);
+		loginUserBean.setUserLogin(false);
 		return "user/logout";
 	}
 	
