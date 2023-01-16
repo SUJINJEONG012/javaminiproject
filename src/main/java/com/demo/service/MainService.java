@@ -19,4 +19,7 @@ public class MainService {
 		RowBounds rowBounds = new RowBounds(0,5);
 		return boardMapper.getContentList(board_info_idx,rowBounds);
 	}
+	
+
+	
 }

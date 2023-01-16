@@ -26,6 +26,10 @@ public class ContentBean {
     private String content_writer_name; //글쓴이 이름 추가
 	
 	
+    
+    
+    
+    
 	
 	public String getContent_writer_name() {
 		return content_writer_name;

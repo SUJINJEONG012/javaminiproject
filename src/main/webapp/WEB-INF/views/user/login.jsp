@@ -11,9 +11,9 @@
 
 
 
-<div class="container" style="margin-top: 100px">
+<div class="container cont-height" style="margin-top: 100px">
       <div class="row">
-        <div class="col-sm-3"></div>
+        
         <div class="col-sm-6">
           <div class="card shadow">
             <div class="card-body">

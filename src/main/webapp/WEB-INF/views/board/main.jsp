@@ -8,7 +8,7 @@
 	<c:import url="/WEB-INF/views/include/menu.jsp" />
 
     <!-- 게시글 리스트 -->
-    <div class="container" style="margin-top: 100px">
+    <div class="container cont-height" style="margin-top: 100px">
       <div class="card shadow">
         <div class="card-body">
           <h4 class="card-title">${boardInfoName }</h4>
@@ -16,7 +16,6 @@
           <table class="table table-hover" id="board_list">
             
             <thead>
-            
               <tr>
                 <th class="text-center d-none d-md-table-cell">글번호</th>
                 <th class="w-50">제목</th>
@@ -35,7 +34,16 @@
                  
                  <td class="text-center d-none d-md-table-cell">${obj.content_writer_name }</td>
                 <td class="text-center d-none d-md-table-cell">${obj.content_date }</td>
+              
+               <c:if test="${readContentBean.content_file != null }">
+              <div class="form-group">
+                <label for="board_file">첨부 이미지</label>
+                <img src="${root }upload/${readContentBean.content_file}" width="100%" /> 
+              </div>
+              </c:if>
+              
               </tr>
+              
 			  </c:forEach>       
             </tbody>
        

@@ -41,6 +41,7 @@ public class BoardController {
 		String boardInfoName = boardService.getBoardInfoName(board_info_idx);
 		model.addAttribute("boardInfoName", boardInfoName);
 		
+		
 		List<ContentBean> contentList = boardService.getContentList(board_info_idx, page);
 		model.addAttribute("contentList", contentList);
 		

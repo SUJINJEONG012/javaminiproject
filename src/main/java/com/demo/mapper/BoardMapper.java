@@ -33,14 +33,21 @@ public interface BoardMapper {
 	
 
 
-	@Select("select t1.content_idx, t1.content_subject, t2.user_name as content_writer_name, " + 
-			"DATE_FORMAT(t1.content_date, '%Y.%m.%d') as content_date " + 
-			"from content_table t1 JOIN user_table t2 " + 
-			"ON t1.content_writer_idx = t2.user_idx " +
+//	@Select("select t1.content_idx, t1.content_subject, t2.user_name as content_writer_name, " + 
+//			"DATE_FORMAT(t1.content_date, '%Y.%m.%d') as content_date " + 
+//			"from content_table t1 JOIN user_table t2 " + 
+//			"ON t1.content_writer_idx = t2.user_idx " +
+//			"and t1.content_board_idx = #{board_info_idx} order by t1.content_idx desc")
+//	
+//	List<ContentBean> getContentList(int board_info_idx, RowBounds rowBounds);
+	
+	@Select("select t2.user_name as content_writer_name, " + 
+			"DATE_FORMAT(t1.content_date, '%Y.%m.%d') as content_date," +
+			"t1.content_idx, t1.content_subject, t1.content_text, t1.content_file, t1.content_writer_idx " +
+			"from content_table t1 join user_table t2 " +
+			"on t1.content_writer_idx = t2.user_idx " +
 			"and t1.content_board_idx = #{board_info_idx} order by t1.content_idx desc")
-	
 	List<ContentBean> getContentList(int board_info_idx, RowBounds rowBounds);
-	
 	
 	
 	@Select("select t2.user_name as content_writer_name, " + 
