@@ -23,53 +23,49 @@
 
     <!-- 게시판 미리보기 부분 -->
     <div class="container cont-height" style="margin-top: 100px">
-      <div class="row">
-      
-      
+     
       
       <c:forEach var="sub_list" items="${list}" varStatus="idx">     
         <div class="col-lg-6" style="margin-top: 20px">
-          <div class="card shadow">
+         
             <div class="card-body">
               <h4 class="card-title">${topMenuList[idx.index].board_info_name}</h4>
+      
               
-              
-              
-              <table class="table table-hover" id="board_list">
-                
-                
-                <thead>
-                  <tr>
-                   
-                    <th class="text-center w-25">글번호</th>
-                    <th>제목</th>
-                     <th>이미지 </th>
-                    <th class="">작성날짜</th>
-                   
-                  </tr>
-                </thead>
-               
-               
-               
-                <tbody>
-                
-                  <c:forEach var="obj" items="${sub_list}">
-                  
-                  <tr>   
-                    <td class="text-center">${obj.content_idx}</td>
-                    <th><a href="${root }/board/read?board_info_idx=${topMenuList[idx.index].board_info_idx}&content_idx=${obj.content_idx}&page=1">${obj.content_subject }</a></th>
-                    <td><img src="${root}upload/${obj.content_file }"/></td>
-                   
-                    <td class="text-center">${obj.content_date }</td>
-                    
-                  </tr>
-                  
-				  </c:forEach>
-				  
-                </tbody>
-              </table>
+     <div class="album py-5">
+   
 
-              <a href="${root }board/main?board_info_idx=${topMenuList[idx.index].board_info_idx}" class="btn btn-primary">더보기</a>
+      <div class="d-flex">
+         <c:forEach var="obj" items="${sub_list}">
+         
+          <div class="card shadow-sm">
+           
+           
+            
+       
+            <div class="card-body">
+            <img src="${root}upload/${obj.content_file }"/>
+            
+  <p> <a href="${root }/board/read?board_info_idx=${topMenuList[idx.index].board_info_idx}&content_idx=${obj.content_idx}&page=1">${obj.content_subject }</a></p>
+              
+             <p> ${obj.content_text}</p>
+             
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                   <a href="${root }board/main?board_info_idx=${topMenuList[idx.index].board_info_idx}" class="btn btn-primary">더보기</a>
+                  
+                </div>
+                <small class="text-muted" lang="en">${obj.content_date }</small>
+              </div>
+            </div>
+
+        </div>
+          </c:forEach>
+        </div>
+              
+              
+            
+
             </div>
             
             
@@ -78,8 +74,7 @@
         </div>
       </c:forEach>
       </div>
-    </div>
-
+   
 	<!-- 하단 푸터부분 -->
 	<c:import url="/WEB-INF/views/include/footer.jsp" />
   </body>

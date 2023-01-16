@@ -17,10 +17,11 @@
             
             <thead>
               <tr>
-                <th class="text-center d-none d-md-table-cell">글번호</th>
-                <th class="w-50">제목</th>
-                <th class="text-center d-none d-md-table-cell">작성자</th>
-                <th class="text-center d-none d-md-table-cell">작성날짜</th>
+                <th class="text-center d-md-table-cell">글번호</th>
+                <th class="">제목</th>
+                <th class="">이미지</th>
+                <th class="text-center  d-md-table-cell">작성자</th>
+                <th class="text-center  d-md-table-cell">작성날짜</th>
               </tr>
             </thead>
             
@@ -29,17 +30,19 @@
             <tbody>
              <c:forEach var="obj" items="${contentList}">
               <tr>
-                <td class="text-center d-none d-md-table-cell">${obj.content_idx }</td>
-                 <td><a href="${root }board/read?board_info_idx=${board_info_idx}&content_idx=${obj.content_idx}&page=${page}">${obj.content_subject }</a></td>
-                 
-                 <td class="text-center d-none d-md-table-cell">${obj.content_writer_name }</td>
-                <td class="text-center d-none d-md-table-cell">${obj.content_date }</td>
+               
+                <td class="text-center d-md-table-cell" lang="en">${obj.content_idx }</td>
+                 <td><a href="${root }board/read?board_info_idx=${board_info_idx}&content_idx=${obj.content_idx}&page=${page}" >${obj.content_subject }</a></td>
+                 <td class="text-center  d-md-table-cell"> <img src="${root }upload/${obj.content_file }"/> </td>
+                 <td class="text-center  d-md-table-cell">${obj.content_writer_name }</td>
+                <td class="text-center  d-md-table-cell" lang="en">${obj.content_date }</td>
               
                <c:if test="${readContentBean.content_file != null }">
               <div class="form-group">
                 <label for="board_file">첨부 이미지</label>
                 <img src="${root }upload/${readContentBean.content_file}" width="100%" /> 
               </div>
+              
               </c:if>
               
               </tr>

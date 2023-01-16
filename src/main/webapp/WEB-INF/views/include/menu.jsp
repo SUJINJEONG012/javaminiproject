@@ -34,7 +34,7 @@
          
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">       
          <c:forEach var="menu" items="${topMenuList }">
-         <li class="nnav-link px-2 text-white">
+         <li class="nav-link px-2 text-white">
           <a href="${root }board/main?board_info_idx=${menu.board_info_idx }" class="nav-link">${menu.board_info_name }</a>
          </li>
       </c:forEach>
@@ -48,19 +48,21 @@
      <c:choose>
         
         <c:when test="${loginUserBean.userLogin ==  true}">          
-           <li class="nav-item">
+           <ul class="nav">
+           <li class="nav-link ">
             <a href="${root }user/modify" class="nav-link">정보수정</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-link">
             <a href="${root }user/logout" class="nav-link">로그아웃</a>
           </li>
+          </ul>
         </c:when>
         
         <c:otherwise>
-           <li class="nav-item btn btn-outline-light me-2">
+           <li class="nav-link  btn btn-outline-light me-2">
             <a href="${root}user/login" class="nav-link">로그인</a>
           </li>
-          <li class="nav-item btn btn-warning">
+          <li class="nav-link  btn btn-warning">
             <a href="${root }user/join" class="nav-link">회원가입</a>
           </li>
         </c:otherwise>
