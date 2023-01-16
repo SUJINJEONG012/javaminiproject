@@ -1,19 +1,11 @@
 @charset "UTF-8";
 
-[lang="ko"] {
-	font-family: "Noto Sans KR", "Montserrat", sans-serif, "맑은 고딕",
-		"Nanum Gothic", "나눔 고딕", "돋움", dotum, sans-serif;
-}
 
-[lang="en"] {
-	font-family: "Montserrat", "Noto Sans KR", sans-serif;
-	letter-spacing: 0;
-	font-weight: 400;
-}
-
-
+/*========================== HEADER ============================*/
 
 header{position:relative;}
+
+
 
 
 .form-label {
@@ -34,7 +26,7 @@ header{position:relative;}
 	appearance: none;
 	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 	background-color: #fff;
-	background-clip: padding-box;
+	
 }
 
 .logo {
@@ -61,6 +53,8 @@ header{position:relative;}
     padding: 10px 0 20px;
 }
 
+/*======================== FOOTER =============================*/
+
 
 
 .footer {
@@ -70,10 +64,10 @@ header{position:relative;}
 .footer .footer-wrap ul {
     display: flex;
 }
-
+.footer .footer-wrap > * {color:#fff;}
 .footer .footer-wrap ul li {}
 
-.footer .footer-wrap ul li~li::before {
+.footer .footer-wrap ul li ~li::before {
     content: "";
     display: inline-block;
     width: 1px;
@@ -83,8 +77,9 @@ header{position:relative;}
 }
 
 .footer .footer-wrap ul li a {
-    font-size: 17px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 400;
+    color:#FFF;
 
 
 }

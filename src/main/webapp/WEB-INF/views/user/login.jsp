@@ -12,11 +12,9 @@
 
 
 <div class="container cont-height" style="margin-top: 100px">
-      <div class="row">
+     
+        <div class="col-lg-12">
         
-        <div class="col-sm-6">
-          <div class="card shadow">
-            <div class="card-body">
               <c:if test="${fail == true }">
                 <div class="alert alert-danger">
                   <h3>로그인 실패</h3>
@@ -25,28 +23,27 @@
               </c:if>
               
               <form:form action="${root }user/login_pro" modelAttribute="loginBean">
-                <div class="form-group">
-                  <form:label path="user_id">아이디</form:label>
-                  <form:input path="user_id"  class="form-control" />
+              
+                <div class="mb-4 mt-4">
+                  <form:label path="user_id" class="form-label">아이디</form:label>
+                  <form:input path="user_id" class="form-input" placeholder="아이디를 입력해주세요"/>
                   <form:errors path="user_id" style="color:coral"/>
                 </div>
-                <div class="form-group">
-                  <form:label path="user_pw">비밀번호</form:label>
-                  <form:input path="user_pw" type="password" showPassword="true" class="form-control" />
+                <div class="mb-4 mt-4">
+                  <form:label path="user_pw" class="form-label">비밀번호</form:label>
+                  <form:input path="user_pw" type="password" showPassword="true" class="form-input" placeholder="비밀번호를 입력해주세요"/>
                   <form:errors path="user_pw" style="color:coral" />
                 </div>
                 
-                <div class="form-group text-right">
-                  <button type="submit" class="btn btn-primary">로그인</button>
-                  <a href="${root }user/join" class="btn btn-danger">회원가입</a>
+                <div class="mb-4 mt-4">
+                  <button type="submit" class="border-button">로그인</button>
+                  <a href="${root }user/join" class="black-button">회원가입</a>
                 </div>
+                
+                
+                
               </form:form>
-              
-              
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3"></div>
+        
       </div>
     </div>
 

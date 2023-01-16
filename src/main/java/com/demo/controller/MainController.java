@@ -24,6 +24,7 @@ public class MainController {
 		
 		ArrayList<List<ContentBean>> list = new ArrayList<List<ContentBean>>();
 		list.add(mainService.getMainList(1));	
+		list.add(mainService.getMainList(2));	
 		model.addAttribute("list", list);
 		
 		return "main";

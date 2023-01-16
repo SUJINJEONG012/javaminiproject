@@ -12,12 +12,14 @@
 
 [lang="en"] {
 	font-family: "Montserrat", "Noto Sans KR", sans-serif;
-	letter-spacing: 0;
-	font-weight: 400;
+	
+	
 }
-::placeholder {
-  font-size: 11px;
-}
+
+
+
+
+
 body {
 	height: 100%;
 	overflow-x: hidden;
@@ -115,14 +117,22 @@ button {
 	color: #333;
 	text-shadow: none;
 }
+
 .dropdown-menu{border-radius:0;padding: 0;}
 .dropdown-menu li{}
 .dropdown-list{font-size:11px; display: block; width: 100%;padding: 1rem;}
 
 .dropdown-list.active, .dropdown-list:active{background-color:#000; color:#fff;}
 .dropdown-list:focus, .dropdown-list:hover{background-color:#000; color:#fff;}
+
+
 table .black-button{width:100%;}
 table .border-button{width:100%;}
+
+
+.btn-100 .black-button {width:50%;}
+.btn-30{ width:30%; margin:0 auto;}
+.btn-30 .black-button{width:100%;}
 
 
 .black-button {
@@ -135,7 +145,7 @@ table .border-button{width:100%;}
 	color: #fff;
 	line-height: 1.5;
 	width: 16%;
-	border-radius: 8px;
+	display: inline-block;
 	font-weight:300;
 }
 
@@ -144,6 +154,11 @@ table .border-button{width:100%;}
 	padding: 0.75rem 0;
 	line-height: 1.5;
 	font-size: 11px;
+	display: inline-block;
+    width: 16%;
+    
+    
+    
 }
 
 

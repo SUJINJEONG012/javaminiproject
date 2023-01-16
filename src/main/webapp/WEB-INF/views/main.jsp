@@ -40,9 +40,7 @@
          
           <div class="card shadow-sm">
            
-           
-            
-       
+          
             <div class="card-body">
             <img src="${root}upload/${obj.content_file }"/>
             
