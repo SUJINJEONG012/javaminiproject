@@ -20,15 +20,12 @@ public class MainController {
 	private MainService mainService;
 
 	@GetMapping("/main")
-	public String main(Model model) {
+	public String main( Model model) {
 		
 		ArrayList<List<ContentBean>> list = new ArrayList<List<ContentBean>>();
-		list.add(mainService.getMainList(1));
-	
+		list.add(mainService.getMainList(1));	
 		model.addAttribute("list", list);
 		
-	
-				
 		return "main";
 	}
 	

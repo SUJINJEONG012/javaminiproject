@@ -22,8 +22,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
 </head>
-
-
 <body>
     
      <header class="p-3 text-bg-dark">
@@ -32,14 +30,14 @@
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           
-         <a class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none logo" href="${root}" lang="en">JEONG SUJIN 프로젝트</a>
+         <a class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" href="${root}" lang="en">JEONG SUJIN 프로젝트</a>
          
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">       
-            <c:forEach var="menu" items="${topMenuList }">
-            <li class="nav-link px-2 text-white">
-              <a href="${root }board/main?board_info_idx=${menu.board_info_idx }" class="nav-link">${menu.board_info_name }</a>
-            </li>
-            </c:forEach>
+         <c:forEach var="menu" items="${topMenuList }">
+         <li class="nnav-link px-2 text-white">
+          <a href="${root }board/main?board_info_idx=${menu.board_info_idx }" class="nav-link">${menu.board_info_name }</a>
+         </li>
+      </c:forEach>
     
           </ul>
 

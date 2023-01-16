@@ -69,19 +69,13 @@ public class BoardController {
 		
 		return "board/read";
 	}
-	
-	
-	
-	
+
 	@GetMapping("/write")
 	public String write(@ModelAttribute("writeContentBean") ContentBean writeContentBean, @RequestParam("board_info_idx") int board_info_idx) {
 		writeContentBean.setContent_board_idx(board_info_idx);
 		return "board/write";
 	}
 	
-	
-	
-
 	@PostMapping("/write_pro")
 	public String write_pro(@Valid @ModelAttribute("writeContentBean") ContentBean writeContentBean,
 			BindingResult result) {

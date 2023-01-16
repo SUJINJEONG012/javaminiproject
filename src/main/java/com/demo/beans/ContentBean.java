@@ -13,9 +13,7 @@ public class ContentBean {
 	
 	@NotBlank(message="내용을 입력해주세요.")
 	private String content_text; //내용 
-	
-	
-	
+
 	private int content_writer_idx; 
 	private int content_board_idx;
 	private String content_date;
