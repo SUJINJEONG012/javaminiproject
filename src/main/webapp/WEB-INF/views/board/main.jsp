@@ -8,10 +8,17 @@
 	<c:import url="/WEB-INF/views/include/menu.jsp" />
 
     <!-- 게시글 리스트 -->
-    <div class="container cont-height" style="margin-top: 100px">
+    <div class="container cont-height" style="margin-top: 50px">
+    
+       <h4 class="card-title py-5">${boardInfoName }</h4>
+       <div class="text-right">
+            <a href="${root }board/write?board_info_idx=${board_info_idx }" class="black-button">글쓰기</a>
+          </div>
+          
+          
       <div class="card shadow">
         <div class="card-body">
-          <h4 class="card-title">${boardInfoName }</h4>
+        
           
           <table class="table table-hover" id="board_list">
             
@@ -53,14 +60,49 @@
           </table>
           
           <!-- 페이징처리 -->
+          
+          <ul class="pagination justify-content-center mb-4 mt-4 ">
+
+					<li class="page-item disabled">
+						<!-- 첫번째 페이지면은 '이전 페이지 보여주기 버튼' 비활성화--> 
+						<a onclick="javascript:page(-1)" aria-label="Previous" class=" link-arrow"> <!-- 이전 페이지 ㄱㄱ --> 
+						<span aria-hidden="true" lang="en">Previous</span>
+					</a>
+
+			       </li>
+
+					<li class="page-item active">
+						<!-- active 클래스 추가함. 왜냐면은 현재 페이지 일 때 색 넣어줄려고  --> <a onclick="javascript:page(0)" class=" a-color link-arrow" lang="en">1</a>
+					</li>
+
+					<li class="page-item disabled">
+						<!-- 마지막 페이지면은 '다음 페이지 보여주기 버튼' 비활성화 --> <a onclick="javascript:page(1)" aria-label="Next" class=" link-arrow"> <!-- 다음 페이지 ㄱㄱ --> <span aria-hidden="true" lang="en">Next</span>
+					</a>
+					</li>
+
+		</ul>
+		
+		
+          
          <div class="d-none d-md-block">
-            <ul class="pagination justify-content-center">
+            <ul class="pagination justify-content-center mb-4 mt-4">
             
               <c:choose>
                 <c:when test="${pageBean.prevPage <= 0 }">
 				  <li class="page-item disabled">
 					<a href="#" class="page-link">이전</a>
 				  </li>
+				  
+				  <li class="page-item disabled">
+						<!-- 첫번째 페이지면은 '이전 페이지 보여주기 버튼' 비활성화--> 
+						<a onclick="javascript:page(-1)" aria-label="Previous" class=" link-arrow"> <!-- 이전 페이지 ㄱㄱ --> 
+						<span aria-hidden="true" lang="en">Previous</span>
+					</a>
+
+		       	</li>
+				  
+				  
+				  
                 </c:when>
                 <c:otherwise>
                	  <li class="page-item">
@@ -70,32 +112,64 @@
                 </c:otherwise>
               </c:choose>
               
+              
+              
               <c:forEach var="idx" begin="${pageBean.min}" end="${pageBean.max}">
+   			   
    			    <c:choose>
 				<c:when test="${idx == pageBean.currentPage}">
+				  
 				  <li class="page-item active">
 					<a href="${root }board/main?board_info_idx=${board_info_idx}&page=${idx}" class="page-link">${idx }</a>
 				  </li>
+				  
+				  <li class="page-item active">
+						<!-- active 클래스 추가함. 왜냐면은 현재 페이지 일 때 색 넣어줄려고  --> <a onclick="javascript:page(0)" class=" a-color link-arrow" lang="en">1</a>
+					</li>
+				  
 				</c:when>
+				
+				
+				
 				<c:otherwise>
 				  <li class="page-item">
 					<a href="${root }board/main?board_info_idx=${board_info_idx}&page=${idx}" class="page-link">${idx }</a>
 				  </li>
+				  
+				  <li class="page-item active">
+						<!-- active 클래스 추가함. 왜냐면은 현재 페이지 일 때 색 넣어줄려고  --> <a onclick="javascript:page(0)" class=" a-color link-arrow" lang="en">1</a>
+					</li>
+					
 				</c:otherwise>
-				</c:choose>   			     			  
+				</c:choose>  
+				 			     			  
    			  </c:forEach>
+   			  
+   			  
    			  
               <c:choose>
                 <c:when test="${pageBean.max >= pageBean.pageCnt }">
+				  
 				  <li class="page-item disabled">
 					<a href="#" class="page-link">다음</a>
 				  </li>
+				  
+				  <li class="page-item disabled">
+						<!-- 마지막 페이지면은 '다음 페이지 보여주기 버튼' 비활성화 --> <a onclick="javascript:page(1)" aria-label="Next" class=" link-arrow"> <!-- 다음 페이지 ㄱㄱ --> <span aria-hidden="true" lang="en">Next</span>
+					</a>
+					</li>
                 </c:when>
                 <c:otherwise>
+               	  
                	  <li class="page-item">
 					<a href="${root }board/main?board_info_idx=${board_info_idx}&page=${pageBean.nextPage}" 
 					   class="page-link">다음</a>
 				  </li>
+				  
+				  <li class="page-item disabled">
+						<!-- 마지막 페이지면은 '다음 페이지 보여주기 버튼' 비활성화 --> <a onclick="javascript:page(1)" aria-label="Next" class=" link-arrow"> <!-- 다음 페이지 ㄱㄱ --> <span aria-hidden="true" lang="en">Next</span>
+					</a>
+					</li>
                 </c:otherwise>
               </c:choose>
               
@@ -106,9 +180,7 @@
          
           
 
-          <div class="text-right">
-            <a href="${root }board/write?board_info_idx=${board_info_idx }" class="btn btn-primary">글쓰기</a>
-          </div>
+          
         </div>
       </div>
     </div>

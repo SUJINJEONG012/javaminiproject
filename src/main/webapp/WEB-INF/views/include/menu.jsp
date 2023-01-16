@@ -40,7 +40,7 @@
 					href="${root}" lang="en">JEONG SUJIN 프로젝트</a>
 
 				<ul
-					class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+					class="nav col-6 mb-2">
 					<c:forEach var="menu" items="${topMenuList }">
 						<li class="nav-link px-2 text-white"><a
 							href="${root }board/main?board_info_idx=${menu.board_info_idx }"

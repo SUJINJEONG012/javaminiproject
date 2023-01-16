@@ -134,10 +134,14 @@ table .border-button{width:100%;}
 .btn-30{ width:30%; margin:0 auto;}
 .btn-30 .black-button{width:100%;}
 
-
+.btn-more .border-button{
+    width: 34%;
+    padding: 0.4rem;
+    text-align: center;
+}
 .black-button {
 	background: #000;
-	font-size: 13px;
+	font-size: 12px;
 	border: 1px solid #000;
 	cursor: pointer;
 	padding: 0.75rem 0;
@@ -149,11 +153,15 @@ table .border-button{width:100%;}
 	font-weight:300;
 }
 
+.black-button a:focus, a:hover{
+	color:#fff;
+}
+
 .border-button {
 	border: 1px solid #000;
 	padding: 0.75rem 0;
 	line-height: 1.5;
-	font-size: 11px;
+	font-size: 12px;
 	display: inline-block;
     width: 16%;
     
