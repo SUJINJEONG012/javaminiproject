@@ -44,6 +44,13 @@ td{vertical-align: middle;}
 	background-clip: padding-box;
 }
 
+.form-input:disabled {
+    background-color:#f6f6f6;
+    opacity: 1;
+    padding: 0.75rem 1rem;
+}
+
+
 .form-radio {
 	display: block;
 	width: 100%;
@@ -130,7 +137,7 @@ table .black-button{width:100%;}
 table .border-button{width:100%;}
 
 
-.btn-100 .black-button {width:50%;}
+.btn-100 .black-button {width:100%;padding: 0.55rem 2em;}
 .btn-30{ width:30%; margin:0 auto;}
 .btn-30 .black-button{width:100%;}
 
@@ -139,6 +146,7 @@ table .border-button{width:100%;}
     padding: 0.4rem;
     text-align: center;
 }
+
 .black-button {
 	background: #000;
 	font-size: 12px;
@@ -153,22 +161,25 @@ table .border-button{width:100%;}
 	font-weight:300;
 }
 
-.black-button a:focus, a:hover{
+.black-button:focus, .black-button:hover{
 	color:#fff;
 }
 
+.page-item .black-button a:focus, .page-item .black-button a:hover{
+	color:#000;
+}
+
+
+
 .border-button {
-	border: 1px solid #000;
+	border: 1px solid #a4a4a4;
 	padding: 0.75rem 0;
 	line-height: 1.5;
 	font-size: 12px;
 	display: inline-block;
-    width: 16%;
-    
-    
+    width: 16%;    
     
 }
-
 
 .border-btn{
 	border: 1px solid #bababa;
@@ -178,6 +189,9 @@ table .border-button{width:100%;}
 	cursor: pointer;
 }
 
+.border-btn a:focus, .border-btn a:hover{
+	color:#fff;
+}
 .black-btn{
 	border: 1px solid #000;
 	background:#000;
@@ -185,7 +199,13 @@ table .border-button{width:100%;}
 	width: 21%;
     text-align: center;
     color:#fff;
+    
 }
+
+.black-btn:focus, .black-btn:hover{
+	color:#fff;
+}
+
 
 .delete-btn{
 	border: 1px solid #ffc100;
@@ -193,6 +213,11 @@ table .border-button{width:100%;}
 	width: 21%;
 	background:#ffc100;
     text-align: center;
+   
+}
+
+.delete-btn:focus, .delete-btn:hover{
+	color:#000;
 }
 
 /*======================== select =============================*/
