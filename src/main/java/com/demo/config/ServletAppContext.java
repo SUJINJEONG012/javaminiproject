@@ -1,5 +1,6 @@
 package com.demo.config;
 
+
 import javax.annotation.Resource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -59,6 +60,7 @@ public class ServletAppContext implements WebMvcConfigurer {
 	@Autowired
 	private BoardService boardService;
 
+	
 	@Resource(name = "loginUserBean")
 	private LoginUserBean loginUserBean;
 
