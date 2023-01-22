@@ -104,7 +104,6 @@ public class ServletAppContext implements WebMvcConfigurer {
 	}
 
 	// 쿼리문 실행을 위한 객체
-	
 	@Bean
 	public MapperFactoryBean<MenuMapper> getMenuMapper(SqlSessionFactory factory) throws Exception {
 		MapperFactoryBean<MenuMapper> factoryBean = new MapperFactoryBean<MenuMapper>(MenuMapper.class);

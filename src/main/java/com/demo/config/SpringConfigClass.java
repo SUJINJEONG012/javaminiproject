@@ -71,7 +71,6 @@ public class SpringConfigClass extends AbstractAnnotationConfigDispatcherServlet
 	
 	//파일 업로드 설정 
 	@Override
-	
 	protected void customizeRegistration(Dynamic registration) {
 		
 		super.customizeRegistration(registration);
